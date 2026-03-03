@@ -1,0 +1,22 @@
+# Item prices and quantities
+prices = [50, 30, 20]
+quantities = [2, 3, 1]
+
+# Discount and Tax rates
+discount_rate = 10   # 10%
+tax_rate = 5         # 5%
+
+# Calculate subtotal
+subtotal = sum(p * q for p, q in zip(prices, quantities))
+print("Subtotal:", subtotal)
+
+# Apply discount
+discount_amount = subtotal * discount_rate / 100
+after_discount = subtotal - discount_amount
+print("After Discount:", after_discount)
+
+# Apply tax
+tax_amount = after_discount * tax_rate / 100
+total_cost = after_discount + tax_amount
+
+print("Final Total Cost:", total_cost)
