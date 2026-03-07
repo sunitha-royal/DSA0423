@@ -1,0 +1,15 @@
+import numpy as np
+from scipy import stats
+import matplotlib.pyplot as plt
+
+control = np.array([5,6,5,7,6])
+treatment = np.array([8,9,7,10,9])
+
+t_stat, p_value = stats.ttest_ind(treatment, control)
+
+print("P-value:", p_value)
+
+plt.boxplot([control,treatment])
+plt.xticks([1,2],['Control','Treatment'])
+plt.title("Treatment Comparison")
+plt.show()
