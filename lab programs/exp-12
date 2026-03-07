@@ -1,0 +1,12 @@
+import pandas as pd
+
+data = {
+'Product':['A','B','C','A','B','D','E','A','C','B'],
+'Quantity':[10,5,8,7,6,9,4,12,3,11]
+}
+
+df = pd.DataFrame(data)
+
+top_products = df.groupby('Product')['Quantity'].sum().sort_values(ascending=False).head(5)
+
+print(top_products)
