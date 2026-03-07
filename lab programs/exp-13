@@ -1,0 +1,13 @@
+from collections import Counter
+
+reviews = [
+"This product is good",
+"This product is very good",
+"Good quality product"
+]
+
+words = " ".join(reviews).lower().split()
+
+freq = Counter(words)
+
+print(freq)
