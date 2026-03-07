@@ -1,0 +1,29 @@
+from sklearn.model_selection import train_test_split
+from sklearn.neighbors import KNeighborsClassifier
+from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score
+import pandas as pd
+
+data = {
+'Age':[30,40,50,35,60,45],
+'BP':[120,130,140,125,150,135],
+'Cholesterol':[200,220,240,210,260,230],
+'Outcome':['Good','Bad','Bad','Good','Bad','Good']
+}
+
+df = pd.DataFrame(data)
+
+X = df[['Age','BP','Cholesterol']]
+y = df['Outcome']
+
+X_train,X_test,y_train,y_test = train_test_split(X,y,test_size=0.3)
+
+model = KNeighborsClassifier(n_neighbors=3)
+
+model.fit(X_train,y_train)
+
+pred = model.predict(X_test)
+
+print("Accuracy:",accuracy_score(y_test,pred))
+print("Precision:",precision_score(y_test,pred,pos_label='Good'))
+print("Recall:",recall_score(y_test,pred,pos_label='Good'))
+print("F1:",f1_score(y_test,pred,pos_label='Good'))
