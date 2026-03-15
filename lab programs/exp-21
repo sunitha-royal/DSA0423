@@ -1,0 +1,26 @@
+import pandas as pd
+from sklearn.neighbors import KNeighborsClassifier
+from sklearn.preprocessing import LabelEncoder
+
+data = {
+'weight':[150,170,120,130,200],
+'color':['red','orange','yellow','yellow','red'],
+'texture':['smooth','rough','smooth','smooth','rough'],
+'type':['apple','orange','banana','banana','apple']
+}
+
+df = pd.DataFrame(data)
+
+le = LabelEncoder()
+df['color']=le.fit_transform(df['color'])
+df['texture']=le.fit_transform(df['texture'])
+df['type']=le.fit_transform(df['type'])
+
+X = df[['weight','color','texture']]
+y = df['type']
+
+model = KNeighborsClassifier(n_neighbors=3)
+model.fit(X,y)
+
+prediction = model.predict([[160,1,0]])
+print("Predicted Fruit:",prediction)
