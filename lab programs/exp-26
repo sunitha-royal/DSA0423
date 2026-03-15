@@ -1,0 +1,13 @@
+import numpy as np
+import matplotlib.pyplot as plt
+
+temp = [30,32,28,25,27]
+rain = [5,3,10,15,12]
+
+corr = np.corrcoef(temp,rain)[0,1]
+print("Correlation:",corr)
+
+plt.scatter(temp,rain)
+plt.xlabel("Temperature")
+plt.ylabel("Rainfall")
+plt.show()
