@@ -1,0 +1,23 @@
+import pandas as pd
+from sklearn.tree import DecisionTreeClassifier
+from sklearn.preprocessing import OneHotEncoder
+
+data = {
+'age':[25,35,45,20],
+'income':[30000,60000,80000,20000],
+'browsing_duration':[10,20,30,5],
+'device_type':['mobile','desktop','mobile','tablet'],
+'purchase':[0,1,1,0]
+}
+
+df = pd.DataFrame(data)
+
+df = pd.get_dummies(df,columns=['device_type'])
+
+X = df.drop('purchase',axis=1)
+y = df['purchase']
+
+model = DecisionTreeClassifier()
+model.fit(X,y)
+
+print("Model Trained")
