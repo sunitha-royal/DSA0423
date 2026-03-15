@@ -1,0 +1,12 @@
+import numpy as np
+import scipy.stats as stats
+
+revenue = np.random.randint(100,500,100)
+
+mean = np.mean(revenue)
+ci = stats.t.interval(0.95,len(revenue)-1,
+                      loc=mean,
+                      scale=stats.sem(revenue))
+
+print("Mean Revenue:",mean)
+print("Confidence Interval:",ci)
