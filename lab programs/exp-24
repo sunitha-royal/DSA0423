@@ -1,0 +1,10 @@
+products = {
+'Laptop':120,
+'Mobile':200,
+'Headphones':150,
+'Tablet':90
+}
+
+popular = max(products,key=products.get)
+
+print("Most Popular Product:",popular)
