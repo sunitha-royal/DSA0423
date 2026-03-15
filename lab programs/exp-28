@@ -1,0 +1,11 @@
+import pandas as pd
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+df = sns.load_dataset("mpg")
+
+sns.scatterplot(x='horsepower',y='mpg',data=df)
+plt.show()
+
+sns.pairplot(df[['mpg','horsepower','weight','acceleration']])
+plt.show()
