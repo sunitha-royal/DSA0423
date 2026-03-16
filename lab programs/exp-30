@@ -1,0 +1,27 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Create sample shoe sales data
+data = {
+    'shoe_size': [6, 7, 8, 9, 10],
+    'quantity': [120, 150, 200, 180, 140]
+}
+
+df = pd.DataFrame(data)
+
+print("Shoe Sales Data:")
+print(df)
+
+# Frequency distribution
+frequency = df.groupby('shoe_size')['quantity'].sum()
+
+print("\nFrequency Distribution of Shoe Sizes:")
+print(frequency)
+
+# Bar chart
+frequency.plot(kind='bar')
+
+plt.title("Shoe Size Frequency Distribution")
+plt.xlabel("Shoe Size")
+plt.ylabel("Quantity Sold")
+plt.show()
