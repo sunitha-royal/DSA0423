@@ -1,0 +1,39 @@
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+from scipy.stats import sem, t
+
+# Create sample customer rating data
+ratings = [4, 5, 3, 4, 5, 4, 3, 5, 4, 4, 5, 3, 4, 5, 4]
+
+# Convert to DataFrame
+data = pd.DataFrame(ratings, columns=['rating'])
+
+print("Customer Ratings Data:")
+print(data)
+
+# Calculate mean rating
+mean_rating = data['rating'].mean()
+
+# Standard error
+standard_error = sem(data['rating'])
+
+# Sample size
+n = len(data['rating'])
+
+# Confidence interval
+confidence = 0.95
+h = standard_error * t.ppf((1 + confidence) / 2, n - 1)
+
+lower = mean_rating - h
+upper = mean_rating + h
+
+print("\nAverage Rating:", mean_rating)
+print("95% Confidence Interval:", (lower, upper))
+
+# Plot histogram
+plt.hist(data['rating'], bins=5, edgecolor='black')
+plt.title("Customer Rating Distribution")
+plt.xlabel("Rating")
+plt.ylabel("Frequency")
+plt.show()
